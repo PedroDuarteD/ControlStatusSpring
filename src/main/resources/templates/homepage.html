@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Status</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <style>
+        #projects{
+           
+            margin-top: 3vh;
+           
+        }
+        .card{
+            border: 1px solid black;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-evenly;
+             padding: 10px;
+             margin-bottom: 10px;
+        }
+        .active{
+            background-color: rgba(10, 248, 248, 0.384);
+        }
+        .notactive{
+            background-color: azure;
+        }
+        .project_name{
+            display: inline-block;
+        }
+        .project_url{
+            display: inline-block;
+        }
+        .project_status{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body >
+    <h1>Control Status</h1>
+
+    <form >
+        <label>Name: <input type="text" name="name"></label>
+        <label>Url: <input type="text" name="url"></label>
+        <button type="submit" hx-post="https://controlstatus.pedroduarte.online/add" hx-target=".list">Submit  </button>
+    </form>
+    <button hx-get="https://controlstatus.pedroduarte.online/list" hx-indicator="#load" hx-swap="outerHTML start" hx-target=".list">Get all data</button>
+    <div id="response"></div>
+
+    <ul class="list">
+       
+    </ul>
+  
+</body>
+</html>
